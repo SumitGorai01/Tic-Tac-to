@@ -3,7 +3,6 @@ let resetBtn = document.querySelector(".reset");
 let turnO = true; //playero.playerx
 let result = document.querySelector(".result");
 
- 
 
 const winPattern = [
     [0, 1, 2],
@@ -65,9 +64,21 @@ const enableBoxes = () => {
 
 // to show winner
 const showwinner = (winner) => {
-    result.innerText = winner;
-    disableBoxes();
+    Swal.fire({
+        title: "Congratulations!",
+        text: "You Won the match . Winner is :  "  + winner,
+        icon: "success"
+    }).then((result) => {
+        // You can add further actions after the alert is dismissed if needed
+        if (result.isConfirmed || result.isDismissed) {
+            if (document.getElementById("result")) {  
+                document.getElementById("result").innerText = winner;
+            }
+            disableBoxes();
+        }
+    });
 }
+
 
 //  to check winner
 const checkWinner = () => {

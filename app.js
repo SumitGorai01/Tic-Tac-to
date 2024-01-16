@@ -3,7 +3,6 @@ let resetBtn = document.querySelector(".reset");
 let turnO = true; //playero.playerx
 let result = document.querySelector(".result");
 
-
 const winPattern = [
     [0, 1, 2],
     [0, 3, 6],
@@ -31,12 +30,14 @@ boxes.forEach((box) => {
     box.addEventListener("click", () => {
         console.log("box is click");
         if (turnO) {
-            box.innerText = "O";
+            box.innerText = 'O';
+            box.classList.add('o-selection');
             turnO = false;
           
         }
         else {
-            box.innerText = "X";
+            box.innerText = 'X';
+            box.classList.add('x-selection');
             turnO = true;
             
         }
@@ -67,18 +68,33 @@ const showwinner = (winner) => {
     Swal.fire({
         title: "Congratulations!",
         text: "You Won the match . Winner is :  "  + winner,
-        icon: "success"
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Re-Start",
     }).then((result) => {
         // You can add further actions after the alert is dismissed if needed
-        if (result.isConfirmed || result.isDismissed) {
+        if (result.isConfirmed) {
             if (document.getElementById("result")) {  
                 document.getElementById("result").innerText = winner;
             }
-            disableBoxes();
+            disableBoxes();            
+        }
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+            // User clicked "Re-Start"
+            autoReset();
         }
     });
 }
 
+const autoReset = () => {
+    // This could include resetting game state, clearing the board, etc.
+    if (document.getElementById("result")) {
+        document.getElementById("result").innerText = "";
+    }
+    enableBoxes(); // Implement enableBoxes() to reset the game state
+}
 
 //  to check winner
 const checkWinner = () => {

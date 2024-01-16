@@ -61,3 +61,11 @@ body {
 .rt {
     color: whitesmoke;
 }
+
+.x-selection {
+    color: blue; /* Change this to the desired color for "X" */
+}
+
+.o-selection {
+    color: red; /* Change this to the desired color for "O" */
+}

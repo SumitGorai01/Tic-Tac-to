@@ -33,7 +33,7 @@ This project is a classic Tic Tac Toe game designed for the web. It allows two p
 
 ## Demo
 
-You can play the game [Click here](tic-tc-to-game.netlify.app).
+You can play the game [Click here](https://tic-tc-to-game.netlify.app/).
 
 ## Screenshot of game
 ![Screenshot (39)](https://github.com/pmkushwaha/Tic-Tac-to/assets/108355544/9b6e83f2-98a1-41df-89af-9441bfabc36e)
